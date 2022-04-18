@@ -1,0 +1,22 @@
+.patient-video {
+    position: absolute;
+    left: 18vw;
+    top: 7vh;
+}
+
+video {
+    width: 55vw;
+    height: 50vh;
+    margin-top: 5px;
+}
+
+.notes {
+    position: absolute;
+    left: 77vw;
+    top: 11vh;
+    width: 20vw;
+}
+
+#note-button {
+    margin-top: 4px;
+}
