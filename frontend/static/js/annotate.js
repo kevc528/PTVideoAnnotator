@@ -38,6 +38,7 @@ function redisplayNotes(video) {
         li.classList.add('note-item');
 
         li.onclick = function () {
+            video.pause()
             video.currentTime = note.timestamp;
         }
 
