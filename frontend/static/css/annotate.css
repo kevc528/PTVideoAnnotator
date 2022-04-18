@@ -17,6 +17,17 @@ video {
     width: 20vw;
 }
 
+ul {
+    list-style-type: none;
+    height: 40vh;
+    overflow-y: scroll;
+}
+
 #note-button {
     margin-top: 4px;
+    cursor: pointer;
+}
+
+.note-item:hover {
+    color: blue;
 }
