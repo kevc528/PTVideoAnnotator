@@ -49,6 +49,8 @@ function redisplayNotes(video) {
 window.addEventListener("load", function () {
     var video = document.getElementById('video');
     var source = document.createElement('source');
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
 
     source.setAttribute('src', VIDEO_DIR + this.window.location.pathname.split('/').pop() + '.mp4');
     source.setAttribute('type', 'video/mp4');
@@ -79,6 +81,15 @@ window.addEventListener("load", function () {
         redisplayNotes(video);
 
         noteTextArea.value = "";
+    }
+
+    var playButton = document.getElementById('play-button');
+    playButton.onclick = function () {
+        video.play();
+    }
+    var pauseButton = document.getElementById('pause-button');
+    pauseButton.onclick = function () {
+        video.pause();
     }
 })
 

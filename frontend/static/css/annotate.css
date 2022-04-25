@@ -4,10 +4,14 @@
     top: 7vh;
 }
 
-video {
+canvas {
     width: 55vw;
     height: 50vh;
     margin-top: 5px;
+}
+
+video {
+    display: none;
 }
 
 .notes {
@@ -30,4 +34,8 @@ ul {
 
 .note-item:hover {
     color: blue;
+}
+
+.video-button {
+    margin-top: 4px;
 }
