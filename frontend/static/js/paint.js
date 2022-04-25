@@ -29,9 +29,9 @@ window.onload = function () {
     tool.onMouseUp = function (event) {
         if (Math.abs(mouseDownPoint.x - event.point.x) < 5 &&
             Math.abs(mouseDownPoint.y - event.point.y) < 5) {
-            var myCircle = new paper.Path.Circle({
+            new paper.Path.Circle({
                 center: event.point,
-                radius: 10,
+                radius: 5,
                 strokeColor: color,
                 fillColor: color
             });
@@ -51,7 +51,7 @@ window.onload = function () {
                 videoLayer.activate();
                 var raster = new paper.Raster(dataURL);
                 raster.position = paper.view.center;
-                setTimeout(loop, 1000 / 30); // drawing at 30fps
+                setTimeout(loop, 1000 / 20); // drawing at 20fps
                 drawLayer.activate();
             }
         })();
