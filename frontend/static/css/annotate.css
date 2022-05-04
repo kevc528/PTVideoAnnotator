@@ -37,7 +37,7 @@ ul {
     overflow-y: scroll;
 }
 
-#note-button {
+#annotate-button {
     margin-top: 4px;
     cursor: pointer;
 }
