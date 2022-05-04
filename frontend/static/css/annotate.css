@@ -4,10 +4,20 @@
     top: 7vh;
 }
 
-canvas {
+.annotation-tools {
+    margin-top: 20px;
+}
+
+#canvas {
     width: 55vw;
     height: 50vh;
     margin-top: 5px;
+}
+
+#duration-canvas {
+    width: 10 vw;
+    height: 8 vh;
+    margin-top: 2px;
 }
 
 video {

@@ -49,8 +49,6 @@ function redisplayNotes(video) {
 window.addEventListener("load", function () {
     var video = document.getElementById('video');
     var source = document.createElement('source');
-    var canvas = document.getElementById('canvas');
-    var ctx = canvas.getContext('2d');
 
     source.setAttribute('src', VIDEO_DIR + this.window.location.pathname.split('/').pop() + '.mp4');
     source.setAttribute('type', 'video/mp4');
@@ -91,5 +89,35 @@ window.addEventListener("load", function () {
     pauseButton.onclick = function () {
         video.pause();
     }
+
+    var durationSlider = document.getElementById('duration-slider');
+    var durationLabel = document.getElementById('duration-label');
+    var durationCanvas = document.getElementById('duration-canvas');
+
+    durationSlider.value = "0";
+
+    durationSlider.addEventListener('change', (event) => {
+        var seconds = parseFloat(event.target.value) / 100 * 5;
+        durationLabel.innerText = `Duration: ${Math.round(seconds * 10) / 10} seconds`
+
+        let currVideoTime = video.currentTime;
+        video.currentTime = currVideoTime + seconds;
+
+        var oldOnPlay = video.onplay;
+
+        video.onpause = function () {
+            video.onplay = oldOnPlay;
+            video.onpause = null;
+        }
+
+        video.onplay = function () {
+            video.pause();
+            durationCanvas.getContext('2d').drawImage(video, 0, 0, durationCanvas.width, durationCanvas.height);
+        }
+
+        video.play();
+
+        video.currentTime = currVideoTime;
+    });
 })
 

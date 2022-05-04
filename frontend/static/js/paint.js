@@ -51,7 +51,7 @@ window.onload = function () {
                 videoLayer.activate();
                 var raster = new paper.Raster(dataURL);
                 raster.position = paper.view.center;
-                setTimeout(loop, 1000 / 30); // drawing at 20fps
+                setTimeout(loop, 1000 / 30); // drawing at 30fps
                 drawLayer.activate();
             }
         })();

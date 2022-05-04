@@ -1,6 +1,6 @@
 <html>
     <head>
-        <script type="text/javascript" src="../static/lib/paper-full.js"></script>
+        <script type="text/javascript" src="../static/lib/paper-full.js"></script>       
         <script type="text/javascript" src="../static/js/annotate.js"></script>
         <script type="text/javascript" src="../static/js/paint.js"></script>
 
@@ -11,13 +11,20 @@
     <body>
         <div class="patient-video">
             <h2>Single Leg Squat</h2>
-            <video id="video" controls>
+            <video id="video" muted="muted" controls>
                 Your browser does not support the video tag.
             </video>
             <canvas id="canvas"></canvas>
             <br>
             <button id="play-button" type="button" class="video-button btn btn-primary">Play</button>
             <button id="pause-button" type="button" class="video-button btn btn-primary">Pause</button>
+
+            <div class="annotation-tools">
+                <input id="duration-slider" class="multi-range" type="range" />
+                <label id="duration-label" for="duration-slider">Duration: 0 seconds</label>
+                <br>
+                <canvas id="duration-canvas"></canvas>
+            </div>
         </div>
         <div class="notes">
             <h3>Current Notes</h3>
