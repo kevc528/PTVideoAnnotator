@@ -1,6 +1,6 @@
 .patient-video {
     position: absolute;
-    left: 18vw;
+    left: 10vw;
     top: 7vh;
 }
 
@@ -12,6 +12,7 @@
     width: 55vw;
     height: 50vh;
     margin-top: 5px;
+    outline: 1px solid black;
 }
 
 #duration-canvas {
@@ -21,6 +22,10 @@
 }
 
 video {
+    display: none;
+}
+
+#temp-canvas {
     display: none;
 }
 
@@ -56,7 +61,7 @@ ul {
 }
 
 .video-button {
-    margin-top: 4px;
+    margin-top: 10px;
 }
 
 #color-picker {

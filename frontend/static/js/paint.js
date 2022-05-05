@@ -168,13 +168,17 @@ window.onload = function () {
         }
     })
 
+    var tempCanvas = document.getElementById("temp-canvas");
+
+    video.addEventListener("loadedmetadata", function (e) {
+        tempCanvas.width = this.videoWidth;
+        tempCanvas.height = this.videoHeight;
+    }, false);
+
     video.addEventListener('play', function () {
         var $this = this;
         (function loop() {
             if (!$this.paused && !$this.ended) {
-                var tempCanvas = document.createElement("canvas");
-                tempCanvas.width = canvas.width;
-                tempCanvas.height = canvas.height;
                 tempCanvas.getContext('2d').drawImage($this, 0, 0, tempCanvas.width, tempCanvas.height);
                 var dataURL = tempCanvas.toDataURL();
 
@@ -220,9 +224,6 @@ window.onload = function () {
 
                 video.play().then(_ => {
                     video.pause();
-                    var tempCanvas = document.createElement("canvas");
-                    tempCanvas.width = canvas.width;
-                    tempCanvas.height = canvas.height;
                     tempCanvas.getContext('2d').drawImage(video, 0, 0, tempCanvas.width, tempCanvas.height);
                     var dataURL = tempCanvas.toDataURL();
 
