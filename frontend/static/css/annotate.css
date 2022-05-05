@@ -46,6 +46,10 @@ ul {
     margin-top: 10px;
 }
 
+#undo-button {
+    margin-left: 10px;
+}
+
 .note-item:hover {
     color: blue;
     cursor: pointer;

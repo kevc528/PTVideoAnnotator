@@ -94,6 +94,15 @@ window.onload = function () {
 
     var eventId = 0;
 
+    var undoButton = document.getElementById('undo-button');
+    undoButton.onclick = function () {
+        var undoPath = framePaths.pop();
+
+        if (undoPath != null) {
+            undoPath.remove();
+        }
+    }
+
     var annotateButton = document.getElementById('annotate-button');
     annotateButton.onclick = function () {
         if (framePaths.length == 0) {
