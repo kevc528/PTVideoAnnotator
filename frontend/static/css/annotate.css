@@ -54,3 +54,31 @@ ul {
 .video-button {
     margin-top: 4px;
 }
+
+#color-picker {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+/* HIDE RADIO */
+[type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio]+img {
+    cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked+img {
+    outline: 2px solid rgb(34, 0, 255);
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+}

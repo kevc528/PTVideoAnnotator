@@ -1,5 +1,3 @@
-var color = "red";
-var mouseDownPoint;
 var path = null;
 var framePaths = [];
 
@@ -20,26 +18,48 @@ window.onload = function () {
     tool.onMouseDown = function (event) {
         video.pause();
         drawLayer.activate();
-        path = new paper.Path();
+
+        if (drawMode === 0) {
+            path = new paper.Path();
+        } else if (drawMode === 1) {
+        }
+
         path.strokeColor = color;
-        mouseDownPoint = event.point;
     }
 
     tool.onMouseDrag = function (event) {
-        path.add(event.point);
+        if (drawMode === 0) {
+            path.add(event.point);
+        } else if (drawMode === 1) {
+            path = new paper.Path.Circle({
+                position: event.downPoint,
+                radius: event.downPoint.subtract(event.point).length,
+                dashArray: [2, 2],
+                strokeColor: color
+            })
+
+            path.removeOn({
+                drag: true,
+                down: true,
+                up: true
+            })
+        }
     }
 
     tool.onMouseUp = function (event) {
         if (path != null) {
-            framePaths.push(path);
+            if (drawMode === 0) {
+                framePaths.push(path);
+            } else if (drawMode === 1) {
+                path = new paper.Path.Circle({
+                    position: event.downPoint,
+                    radius: event.downPoint.subtract(event.point).length,
+                    strokeColor: color
+                })
+                framePaths.push(path);
+            }
         }
     }
-
-    var colorPicker = document.getElementById('color-picker');
-
-    colorPicker.addEventListener('change', (event) => {
-        color = event.target.value;
-    })
 
     var durationSlider = document.getElementById('duration-slider');
 

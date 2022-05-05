@@ -42,5 +42,22 @@ window.addEventListener("load", function () {
             })
         }
     });
+
+    var colorPicker = document.getElementById('color-picker');
+
+    colorPicker.addEventListener('change', (event) => {
+        color = event.target.value;
+    })
+
+    var pencilIcon = document.getElementById('pencil-icon');
+    pencilIcon.onclick = function () {
+        drawMode = parseInt(pencilIcon.getAttribute("value"))
+        console.log(drawMode);
+    }
+
+    var circleIcon = document.getElementById('circle-icon');
+    circleIcon.onclick = function () {
+        drawMode = parseInt(circleIcon.getAttribute("value"))
+    }
 })
 
