@@ -112,7 +112,9 @@ window.onload = function () {
 
     var annotateButton = document.getElementById('annotate-button');
     annotateButton.onclick = function () {
-        if (framePaths.length == 0) {
+        var noteContent = noteTextArea.value === "" ? "Visual Annotation Only" : noteTextArea.value;
+
+        if (framePaths.length == 0 && noteContent === "") {
             alert("No annotations!");
             return;
         }
@@ -128,7 +130,6 @@ window.onload = function () {
 
         framePaths = [];
 
-        var noteContent = noteTextArea.value === "" ? "Visual Annotation Only" : noteTextArea.value;
         var videoTime = video.currentTime;
         var noteEvent = { "type": "note", "content": noteContent, "timestamp": videoTime, "id": eventId++ };
 

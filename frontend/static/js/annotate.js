@@ -80,5 +80,14 @@ window.addEventListener("load", function () {
     rectangleIcon.onclick = function () {
         drawMode = parseInt(rectangleIcon.getAttribute("value"))
     }
+
+    var finishButton = document.getElementById('finish-button');
+    finishButton.onclick = function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", window.location.href, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(events));
+        window.location.href = '/';
+    }
 })
 
