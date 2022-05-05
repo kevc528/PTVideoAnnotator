@@ -7,4 +7,6 @@ Install poetry. Find instructions [here](https://python-poetry.org/docs/#osx--li
 
 Go to backend directory and run `poetry shell`.
 
+Install dependencies with `poetry install`. You only need to do this step once.
+
 Run `python main.py`.
