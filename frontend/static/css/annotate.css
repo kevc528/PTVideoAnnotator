@@ -43,7 +43,7 @@ ul {
 }
 
 #annotate-button {
-    margin-top: 4px;
+    margin-top: 10px;
 }
 
 .note-item:hover {
@@ -71,6 +71,7 @@ ul {
 /* IMAGE STYLES */
 [type=radio]+img {
     cursor: pointer;
+    margin-right: 10px;
 }
 
 /* CHECKED STYLES */

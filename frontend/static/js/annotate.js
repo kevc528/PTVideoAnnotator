@@ -52,6 +52,11 @@ window.addEventListener("load", function () {
     var pencilIcon = document.getElementById('pencil-icon');
     pencilIcon.onclick = function () {
         drawMode = parseInt(pencilIcon.getAttribute("value"))
+    }
+
+    var lineIcon = document.getElementById('line-icon');
+    lineIcon.onclick = function () {
+        drawMode = parseInt(lineIcon.getAttribute("value"))
         console.log(drawMode);
     }
 

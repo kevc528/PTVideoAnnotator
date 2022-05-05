@@ -21,16 +21,26 @@ window.onload = function () {
 
         if (drawMode === 0) {
             path = new paper.Path();
-        } else if (drawMode === 1) {
+            path.strokeColor = color;
         }
-
-        path.strokeColor = color;
     }
 
     tool.onMouseDrag = function (event) {
         if (drawMode === 0) {
             path.add(event.point);
         } else if (drawMode === 1) {
+            path = new paper.Path({
+                segments: [event.downPoint, event.point],
+                dashArray: [2, 2],
+                strokeColor: color
+            })
+
+            path.removeOn({
+                drag: true,
+                down: true,
+                up: true
+            })
+        } else if (drawMode === 2) {
             path = new paper.Path.Circle({
                 position: event.downPoint,
                 radius: event.downPoint.subtract(event.point).length,
@@ -49,19 +59,25 @@ window.onload = function () {
     tool.onMouseUp = function (event) {
         if (path != null) {
             if (drawMode === 0) {
-                framePaths.push(path);
             } else if (drawMode === 1) {
+                path = new paper.Path({
+                    segments: [event.downPoint, event.point],
+                    strokeColor: color
+                })
+            } else if (drawMode === 2) {
                 path = new paper.Path.Circle({
                     position: event.downPoint,
                     radius: event.downPoint.subtract(event.point).length,
                     strokeColor: color
                 })
-                framePaths.push(path);
             }
+
+            framePaths.push(path);
         }
     }
 
     var durationSlider = document.getElementById('duration-slider');
+    var durationLabel = document.getElementById('duration-label');
 
     var eventId = 0;
 
@@ -92,6 +108,8 @@ window.onload = function () {
         redisplayTimeline(video);
 
         noteTextArea.value = "";
+        durationSlider.value = 0;
+        durationLabel.innerText = `Duration: 0 seconds`
     }
 
     video.addEventListener('timeupdate', function () {
