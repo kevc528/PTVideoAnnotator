@@ -31,9 +31,12 @@ window.addEventListener("load", function () {
             video.play();
         } else {
             video.pause();
-            playPauseButton.src = PLAY_SRC;
         }
     }
+
+    video.addEventListener('pause', () => {
+        playPauseButton.src = PLAY_SRC;
+    })
 
     durationSlider.addEventListener('change', (event) => {
         if (video.paused) {
