@@ -35,6 +35,12 @@ window.onload = function () {
         }
     }
 
+    var colorPicker = document.getElementById('color-picker');
+
+    colorPicker.addEventListener('change', (event) => {
+        color = event.target.value;
+    })
+
     var durationSlider = document.getElementById('duration-slider');
 
     var eventId = 0;
