@@ -53,6 +53,16 @@ window.onload = function () {
                 down: true,
                 up: true
             })
+        } else {
+            path = new paper.Path.Rectangle(event.downPoint, event.point);
+            path.strokeColor = color;
+            path.dashArray = [2, 2];
+
+            path.removeOn({
+                drag: true,
+                down: true,
+                up: true
+            })
         }
     }
 
@@ -70,6 +80,9 @@ window.onload = function () {
                     radius: event.downPoint.subtract(event.point).length,
                     strokeColor: color
                 })
+            } else {
+                path = new paper.Path.Rectangle(event.downPoint, event.point);
+                path.strokeColor = color;
             }
 
             framePaths.push(path);

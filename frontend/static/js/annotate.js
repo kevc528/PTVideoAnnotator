@@ -64,5 +64,10 @@ window.addEventListener("load", function () {
     circleIcon.onclick = function () {
         drawMode = parseInt(circleIcon.getAttribute("value"))
     }
+
+    var rectangleIcon = document.getElementById('rectangle-icon');
+    rectangleIcon.onclick = function () {
+        drawMode = parseInt(rectangleIcon.getAttribute("value"))
+    }
 })
 
