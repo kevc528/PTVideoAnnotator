@@ -1,7 +1,8 @@
 .patient-video {
     position: absolute;
     left: 10vw;
-    top: 7vh;
+    margin-top: 20px;
+
 }
 
 .annotation-tools {
@@ -96,4 +97,9 @@ ul {
 #width-input {
     width: 40px;
     margin-right: 40px;
+}
+
+#user-id {
+    text-align: right;
+    margin-right: 5px;
 }
