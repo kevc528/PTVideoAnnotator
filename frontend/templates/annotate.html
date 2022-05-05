@@ -2,9 +2,8 @@
     <head>
         <script type="text/javascript" src="../static/lib/paper-full.js"></script>     
         <script type='text/javascript' > 
-            var events = {}; 
-            var myPath;
-          </script>      
+            var events = []; 
+        </script>      
         <script type="text/javascript" src="../static/js/paint.js"></script>      
         <script type="text/javascript" src="../static/js/annotate.js"></script>
 
@@ -15,7 +14,7 @@
     <body>
         <div class="patient-video">
             <h2>Single Leg Squat</h2>
-            <video id="video" muted="muted" controls>
+            <video id="video" controls>
                 Your browser does not support the video tag.
             </video>
             <video id="video-double" muted="muted" controls>
@@ -34,7 +33,7 @@
             </div>
         </div>
         <div class="notes">
-            <h3>Current Notes</h3>
+            <h3>Annotation Timeline</h3>
 
             <ul id="note-list">
 
@@ -43,7 +42,7 @@
             <div class="add-note-section">
                 <label for="note">Note:</label>
                 <textarea id="note-textarea" class="form-control" id="note" name="note" rows="4" cols="40"></textarea>
-                <button id="annotation-button" type="button" class="btn btn-primary">Add Annotation</button>
+                <button id="annotate-button" type="button" class="btn btn-primary">Add Annotation</button>
             </div>
         </div>
     </body>

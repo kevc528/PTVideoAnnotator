@@ -1,5 +1,10 @@
 var color = "red";
 var mouseDownPoint;
+var path = null;
+var framePaths = [];
+
+// id -> path
+var eventsOnScreen = {};
 
 window.onload = function () {
     var video = document.getElementById('video');
@@ -15,26 +20,80 @@ window.onload = function () {
     tool.onMouseDown = function (event) {
         video.pause();
         drawLayer.activate();
-        myPath = new paper.Path();
-        myPath.strokeColor = color;
+        path = new paper.Path();
+        path.strokeColor = color;
         mouseDownPoint = event.point;
     }
 
     tool.onMouseDrag = function (event) {
-        myPath.add(event.point);
+        path.add(event.point);
     }
 
     tool.onMouseUp = function (event) {
-        if (Math.abs(mouseDownPoint.x - event.point.x) < 5 &&
-            Math.abs(mouseDownPoint.y - event.point.y) < 5) {
-            new paper.Path.Circle({
-                center: event.point,
-                radius: 5,
-                strokeColor: color,
-                fillColor: color
-            });
+        if (path != null) {
+            framePaths.push(path);
         }
     }
+
+    var durationSlider = document.getElementById('duration-slider');
+
+    var eventId = 0;
+
+    var annotateButton = document.getElementById('annotate-button');
+    annotateButton.onclick = function () {
+        if (framePaths.length == 0) {
+            alert("No annotations!");
+            return;
+        }
+
+        var duration = Math.round(parseFloat(durationSlider.value) / 100 * 5 * 10) / 10;
+        var startTime = video.currentTime;
+        var endTime = startTime + duration;
+
+        framePaths.forEach(path => {
+            events.push({ "path": path.exportJSON(), "startTime": startTime, "endTime": endTime, "id": eventId++ });
+            eventsOnScreen[eventId] = path
+        })
+
+        framePaths = [];
+
+        var noteContent = noteTextArea.value === "" ? "Visual Annotation Only" : noteTextArea.value;
+        var videoTime = video.currentTime;
+        var noteEvent = { "type": "note", "content": noteContent, "timestamp": videoTime, "id": eventId++ };
+
+        events.push(noteEvent);
+
+        redisplayTimeline(video);
+
+        noteTextArea.value = "";
+    }
+
+    video.addEventListener('timeupdate', function () {
+        var currTime = video.currentTime;
+        var toDisplay = events.filter(event => event.type !== "note" && event.startTime <= currTime && event.endTime >= currTime);
+
+        toDisplay.forEach(event => {
+            if (!eventsOnScreen.hasOwnProperty(event.id)) {
+                drawLayer.activate();
+                eventsOnScreen[event.id] = new paper.Path();
+                eventsOnScreen[event.id].importJSON(event.path);
+            }
+        })
+
+        for (var id in eventsOnScreen) {
+            var match;
+
+            toDisplay.forEach(event => {
+                if (event.id === parseInt(id)) {
+                    match = true;
+                }
+            })
+            if (!match) {
+                eventsOnScreen[id].remove();
+                delete eventsOnScreen[id];
+            }
+        }
+    })
 
     video.addEventListener('play', function () {
         var $this = this;
@@ -55,7 +114,7 @@ window.onload = function () {
         })();
     }, 0);
 
-    function redisplayNotes(video) {
+    function redisplayTimeline(video) {
 
         function str_pad_left(string, pad, length) {
             return (new Array(length + 1).join(pad) + string).slice(-length);
@@ -67,14 +126,7 @@ window.onload = function () {
             notesList.removeChild(notesList.firstChild);
         }
 
-        var notes = [];
-        for (var timestamp in events) {
-            events[timestamp].forEach(e => {
-                if (e.type === "note") {
-                    notes.push({ "timestamp": timestamp, "content": e.content })
-                }
-            })
-        }
+        var notes = events.filter(e => e.type === "note");
         notes.sort((a, b) => a.timestamp - b.timestamp);
 
         notes.forEach(note => {
@@ -115,26 +167,5 @@ window.onload = function () {
     var noteTextArea = document.getElementById('note-textarea');
     noteTextArea.onfocus = function () {
         video.pause();
-    }
-
-    var addNoteButton = document.getElementById('annotation-button');
-    addNoteButton.onclick = function () {
-        if (noteTextArea.value === "") {
-            alert("Empty note!");
-            return;
-        }
-        var noteContent = noteTextArea.value;
-        var videoTime = video.currentTime;
-        var noteEvent = { "type": "note", "content": noteContent };
-
-        if (videoTime in events) {
-            events[videoTime].push(noteEvent);
-        } else {
-            events[videoTime] = [noteEvent];
-        }
-
-        redisplayNotes(video);
-
-        noteTextArea.value = "";
     }
 }

@@ -37,13 +37,18 @@ ul {
     overflow-y: scroll;
 }
 
-#annotate-button {
+#note-button {
     margin-top: 4px;
     cursor: pointer;
 }
 
+#annotate-button {
+    margin-top: 4px;
+}
+
 .note-item:hover {
     color: blue;
+    cursor: pointer;
 }
 
 .video-button {
