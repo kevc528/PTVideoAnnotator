@@ -59,6 +59,7 @@ ul {
 
 #undo-button {
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .note-item:hover {
