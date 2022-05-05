@@ -44,9 +44,13 @@ window.addEventListener("load", function () {
     });
 
     var colorPicker = document.getElementById('color-picker');
-
     colorPicker.addEventListener('change', (event) => {
         color = event.target.value;
+    })
+
+    var widthInput = document.getElementById('width-input');
+    widthInput.addEventListener('change', (event) => {
+        width = parseInt(event.target.value);
     })
 
     var pencilIcon = document.getElementById('pencil-icon');

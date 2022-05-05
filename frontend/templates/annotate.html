@@ -4,8 +4,9 @@
         <script type='text/javascript' > 
             var events = []; 
             var color = "red";
+            var width = 5;
 
-            // 0 for freehand, 1 for circle
+            // 0 for freehand, 1 for straight line, 2 for circle, 3 for rectangle
             var drawMode = 0;
         </script>      
         <script type="text/javascript" src="../static/js/paint.js"></script>      
@@ -30,9 +31,14 @@
             <button id="pause-button" type="button" class="video-button btn btn-primary">Pause</button>
 
             <div class="annotation-tools">
-                <input id="duration-slider" class="multi-range" type="range" />
+                <input id="duration-slider" class="multi-range" type="range" value="0" />
                 <label id="duration-label" for="duration-slider">Duration: 0 seconds</label>
+
                 <input type="color" id="color-picker" value="#ff0000">
+
+                <label for="width-input">Stroke Width:</label>
+                <input type="number" id="width-input" name="width-input" min="1" value="5" >
+
                 <label>
                     <input type="radio" name="draw-mode" value="0" checked>
                     <img id="pencil-icon" class="icon" src="https://cdn-icons-png.flaticon.com/512/481/481874.png" value="0">

@@ -61,7 +61,7 @@ ul {
 
 #color-picker {
     margin-left: 40px;
-    margin-right: 40px;
+    margin-right: 20px;
 }
 
 /* HIDE RADIO */
@@ -86,4 +86,9 @@ ul {
 .icon {
     width: 50px;
     height: 50px;
+}
+
+#width-input {
+    width: 40px;
+    margin-right: 40px;
 }

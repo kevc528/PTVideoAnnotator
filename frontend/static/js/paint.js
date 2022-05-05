@@ -22,6 +22,7 @@ window.onload = function () {
         if (drawMode === 0) {
             path = new paper.Path();
             path.strokeColor = color;
+            path.strokeWidth = width;
         }
     }
 
@@ -32,7 +33,8 @@ window.onload = function () {
             path = new paper.Path({
                 segments: [event.downPoint, event.point],
                 dashArray: [2, 2],
-                strokeColor: color
+                strokeColor: color,
+                strokeWidth: width
             })
 
             path.removeOn({
@@ -45,7 +47,8 @@ window.onload = function () {
                 position: event.downPoint,
                 radius: event.downPoint.subtract(event.point).length,
                 dashArray: [2, 2],
-                strokeColor: color
+                strokeColor: color,
+                strokeWidth: width
             })
 
             path.removeOn({
@@ -57,6 +60,7 @@ window.onload = function () {
             path = new paper.Path.Rectangle(event.downPoint, event.point);
             path.strokeColor = color;
             path.dashArray = [2, 2];
+            path.strokeWidth = width;
 
             path.removeOn({
                 drag: true,
@@ -72,17 +76,20 @@ window.onload = function () {
             } else if (drawMode === 1) {
                 path = new paper.Path({
                     segments: [event.downPoint, event.point],
-                    strokeColor: color
+                    strokeColor: color,
+                    strokeWidth: width
                 })
             } else if (drawMode === 2) {
                 path = new paper.Path.Circle({
                     position: event.downPoint,
                     radius: event.downPoint.subtract(event.point).length,
-                    strokeColor: color
+                    strokeColor: color,
+                    strokeWidth: width
                 })
             } else {
                 path = new paper.Path.Rectangle(event.downPoint, event.point);
                 path.strokeColor = color;
+                path.strokeWidth = width;
             }
 
             framePaths.push(path);
