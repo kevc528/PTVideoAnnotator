@@ -1,6 +1,8 @@
 // annotate js file for annotate.html page
 
 const VIDEO_DIR = "../static/videos/"
+const PLAY_SRC = "https://cdn-icons-png.flaticon.com/512/727/727245.png"
+const PAUSE_SRC = "https://cdn-icons-png.flaticon.com/512/1214/1214679.png"
 
 window.addEventListener("load", function () {
     var video = document.getElementById('video');
@@ -21,14 +23,16 @@ window.addEventListener("load", function () {
 
     durationSlider.value = "0";
 
-    var playButton = document.getElementById('play-button');
-    playButton.onclick = function () {
-        durationCanvas.getContext('2d').clearRect(0, 0, durationCanvas.width, durationCanvas.height);
-        video.play();
-    }
-    var pauseButton = document.getElementById('pause-button');
-    pauseButton.onclick = function () {
-        video.pause();
+    var playPauseButton = document.getElementById('play-pause-button');
+    playPauseButton.onclick = function () {
+        if (video.paused) {
+            durationCanvas.getContext('2d').clearRect(0, 0, durationCanvas.width, durationCanvas.height);
+            playPauseButton.src = PAUSE_SRC;
+            video.play();
+        } else {
+            video.pause();
+            playPauseButton.src = PLAY_SRC;
+        }
     }
 
     durationSlider.addEventListener('change', (event) => {

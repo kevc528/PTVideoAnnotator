@@ -9,6 +9,11 @@
     margin-top: 20px;
 }
 
+#play-pause-button {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
 #canvas {
     width: 55vw;
     height: 50vh;
