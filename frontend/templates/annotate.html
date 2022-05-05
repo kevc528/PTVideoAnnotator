@@ -38,37 +38,38 @@
             <canvas id="temp-canvas"></canvas>
             <br>
             <img id="play-pause-button" class="video-button" src="https://cdn-icons-png.flaticon.com/512/727/727245.png" width="30" height="30">
+            
+            <label>
+                <input type="radio" name="draw-mode" value="0" checked>
+                <img id="pencil-icon" class="icon" src="https://cdn-icons-png.flaticon.com/512/481/481874.png" value="0" title="Free Draw">
+            </label>
+            
+            <label>
+                <input type="radio" name="draw-mode" value="1">
+                <img id="line-icon" class="icon" src="https://cdn-icons-png.flaticon.com/512/815/815497.png" value="1" title="Line">
+            </label>
+
+            <label>
+                <input type="radio" name="draw-mode" value="2">
+                <img id="circle-icon" class="icon" src="https://cdn-icons-png.flaticon.com/512/481/481078.png" value="2" title="Circle">
+            </label>
+
+            <label>
+                <input type="radio" name="draw-mode" value="3">
+                <img id="rectangle-icon" class="icon" src="https://cdn-icons-png.flaticon.com/512/33/33848.png" value="3" title="Box">
+            </label>
+
+            <img id="undo-button" src="https://cdn-icons-png.flaticon.com/512/0/340.png">
 
             <div class="annotation-tools">
                 <input id="duration-slider" class="multi-range" type="range" value="0" />
                 <label id="duration-label" for="duration-slider">Duration: 0 seconds</label>
 
+                <label id="color-picker-label" for="color-picker">Color:</label>
                 <input type="color" id="color-picker" value="#ff0000">
 
                 <label for="width-input">Stroke Width:</label>
                 <input type="number" id="width-input" name="width-input" min="1" value="5" >
-
-                <label>
-                    <input type="radio" name="draw-mode" value="0" checked>
-                    <img id="pencil-icon" class="icon" src="https://cdn-icons-png.flaticon.com/512/481/481874.png" value="0">
-                </label>
-                
-                <label>
-                    <input type="radio" name="draw-mode" value="1">
-                    <img id="line-icon" class="icon" src="https://cdn-icons-png.flaticon.com/512/815/815497.png" value="1">
-                </label>
-
-                <label>
-                    <input type="radio" name="draw-mode" value="2">
-                    <img id="circle-icon" class="icon" src="https://cdn-icons-png.flaticon.com/512/481/481078.png" value="2">
-                </label>
-
-                <label>
-                    <input type="radio" name="draw-mode" value="3">
-                    <img id="rectangle-icon" class="icon" src="https://cdn-icons-png.flaticon.com/512/33/33848.png" value="3">
-                </label>
-
-                <img id="undo-button" class="icon" src="https://cdn-icons-png.flaticon.com/512/0/340.png">
 
                 <br>
                 <canvas id="duration-canvas"></canvas>

@@ -11,6 +11,7 @@
 
 #play-pause-button {
     margin-left: 10px;
+    margin-right: 40px;
     cursor: pointer;
 }
 
@@ -58,8 +59,10 @@ ul {
 }
 
 #undo-button {
-    margin-left: 10px;
+    margin-left: 50px;
     cursor: pointer;
+    width: 50px;
+    height: 50px;
 }
 
 .note-item:hover {
@@ -72,8 +75,11 @@ ul {
 }
 
 #color-picker {
-    margin-left: 40px;
     margin-right: 20px;
+}
+
+#color-picker-label {
+    margin-left: 30px;
 }
 
 /* HIDE RADIO */
@@ -96,8 +102,13 @@ ul {
 }
 
 .icon {
+    margin-top: 10px;
     width: 50px;
     height: 50px;
+}
+
+#pencil-icon {
+    margin-left: 100px;
 }
 
 #width-input {
