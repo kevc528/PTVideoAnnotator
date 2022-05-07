@@ -86,8 +86,17 @@ window.addEventListener("load", function () {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", window.location.href, true);
         xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    window.location.href = '/';
+                } else {
+                    console.error(xhr.statusText);
+                }
+            }
+        };
+
         xhr.send(JSON.stringify(events));
-        window.location.href = '/';
     }
 })
 

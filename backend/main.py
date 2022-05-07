@@ -18,8 +18,9 @@ def annotate(filename):
         return render_template("annotate.html")
     else:
         body_json = request.get_json()
+        print(body_json)
         video_events[filename] = body_json
-        return redirect('/')
+        return ""
 
 @app.route('/watch/<filename>')
 def watch(filename):
